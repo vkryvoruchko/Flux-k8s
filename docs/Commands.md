@@ -1,8 +1,4 @@
-![la logo](https://user-images.githubusercontent.com/42839573/67322755-818e9400-f4df-11e9-97c1-388bf357353d.png)
-
-## Hands-On GitOps
-
-### This document contains a number of commands that may prove useful to the student.
+### Flux commands.
 
 This is the command to install fluxctl on an Ubuntu server.
 > Note: After the publication of this course, the maintainers of snap added the confinement security feature. Depending on Weavework's maintenance of the fluxctl binaries in the snap repositories, it may be necessary to add the "--classic" flag to the flux install command.
@@ -75,6 +71,15 @@ This is the command to cause flux to sync with the repo.
 
 ```
 $ fluxctl sync --k8s-fwd-ns flux
+```
+
+How to increase sync time
+
+```
+https://stackoverflow.com/questions/66759005/how-can-i-change-fluxcd-automatic-sync-time
+
+$ k edit deployment flux -n flux
+$ add --sync-interval=20s to template.spec.containers.args
 ```
 
 This is the command to set an environment variable to tell fluxctl the namespace that flux is running in.
